@@ -179,9 +179,12 @@ require("lazy").setup({
 	{
 		"lunarvim/colorschemes"
 	},
-  {
-    "Abstract-IDE/Abstract-cs"
-  },
+	{
+		"Abstract-IDE/Abstract-cs"
+	},
+	{
+		'ThePrimeagen/vim-be-good',
+	},
 })
 
 require("config")
