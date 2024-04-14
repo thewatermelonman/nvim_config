@@ -1,2 +1,2 @@
 # nvim_config
-teting my own nvim config
+testing my own nvim config
