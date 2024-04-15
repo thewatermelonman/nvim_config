@@ -1,6 +1,9 @@
--- Keymaps
+-- KEYMAPS
+
+-- Comments
 vim.keymap.set("n", "<leader>/", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true, desc = "Comment Line" })
 
+-- quick actions
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true, desc = 'Toggle Explorer'})
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true, desc = "Save"})
 vim.api.nvim_set_keymap('n', '<leader>c', ':bd<CR>', { noremap = true, silent = true, desc = 'Close current window'})
@@ -17,6 +20,15 @@ vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { noremap = true, s
 vim.api.nvim_set_keymap('v', '<A-j>', ':m \'>+1<CR>gv-gv', { noremap = true, silent = true, desc = "Move Up"})
 vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv-gv', { noremap = true, silent = true, desc = "Move Up"})
 
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find Files"})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Live Grep"})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find Buffer"})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Help Tags"})
+
+-- Terminal
 require('which-key').register({
 	["t"] = { "<cmd>ToggleTerm<CR> <C-\\><C-n>i", "Terminal" },
 	b = {
@@ -29,7 +41,7 @@ require('which-key').register({
 }, { prefix = "<leader>" })
 
 
-
+-- LSP
 vim.keymap.set('n', '<space>E', vim.diagnostic.open_float, {desc = "See Diagnostic"})
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),

@@ -29,6 +29,7 @@ vim.opt.rtp:prepend(lazypath)
 -- treesitter
 -- mason
 -- rust-tools
+-- telescope
 -- lsp:
 -- 	"hrsh7th/nvim-cmp",
 -- 	"cmp-nvim-lsp",
@@ -61,6 +62,10 @@ require("lazy").setup({
 	},
 	{
 		'simrat39/rust-tools.nvim',
+	},
+	{
+		'nvim-telescope/telescope.nvim', tag = '0.1.6',
+		dependencies = { 'nvim-lua/plenary.nvim' },
 	},
 	{
 		"hrsh7th/nvim-cmp",
