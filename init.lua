@@ -37,6 +37,7 @@ vim.opt.rtp:prepend(lazypath)
 --  "cmp-buffer",
 --  "cmp-path",
 --  "cmp-cmdline",
+-- nvim-ts-autotag
 -- nvim-autopairs
 -- Comment
 -- which-key
@@ -86,6 +87,10 @@ require("lazy").setup({
 		lazy = true,
 	},
 	{
+		'windwp/nvim-ts-autotag',
+		config = function() require('nvim-ts-autotag').setup() end,
+	},
+	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
 		config = true
@@ -120,7 +125,13 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("nvim-tree").setup {}
+			require("nvim-tree").setup {
+				view = {
+					float = {
+						enable = true,
+					},
+				},
+			}
 		end,
 	},
 	{
