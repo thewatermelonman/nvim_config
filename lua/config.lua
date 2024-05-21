@@ -1,10 +1,12 @@
 vim.g.mapleader = " "
 
 vim.opt.wrap = true
-vim.opt.relativenumber = true -- relative line numbers
-vim.opt.breakindent = true
+vim.opt.breakindent = true 
+vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+require('mason').setup()
 
 vim.cmd[[colorscheme ferrum]]
 
@@ -16,7 +18,6 @@ require('plugins.telescope')
 
 require('mappings')
 require('lsp.init')
-
 
 vim.opt.shell = "pwsh.exe"
 vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"

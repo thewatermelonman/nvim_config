@@ -1,5 +1,4 @@
 -- KEYMAPS
-
 -- Comments
 vim.keymap.set("n", "<leader>/", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true, desc = "Comment Line" })
 
@@ -28,7 +27,8 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find Files"})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Live Grep"})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find Buffer"})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Help Tags"})
-
+vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, {desc = "Next Error"})
+vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, {desc = "Prev Error"})
 -- Terminal
 require('which-key').register({
 	["t"] = { "<cmd>ToggleTerm<CR> <C-\\><C-n>i", "Terminal" },
@@ -43,7 +43,7 @@ require('which-key').register({
 
 
 -- LSP
-vim.keymap.set('n', '<space>E', vim.diagnostic.open_float, {desc = "See Diagnostic"})
+-- vim.keymap.set('n', '<space>E', vim.diagnostic.open_float, {desc = "See Diagnostic"})
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 	callback = function(ev)

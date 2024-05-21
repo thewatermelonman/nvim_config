@@ -34,9 +34,11 @@ vim.opt.rtp:prepend(lazypath)
 -- 	"hrsh7th/nvim-cmp",
 -- 	"cmp-nvim-lsp",
 --  "cmp_luasnip",
+--  "luasnip"
 --  "cmp-buffer",
 --  "cmp-path",
 --  "cmp-cmdline",
+--  "coc"
 -- nvim-ts-autotag
 -- nvim-autopairs
 -- Comment
@@ -79,6 +81,13 @@ require("lazy").setup({
 		},
 	},
 	{ "hrsh7th/cmp-nvim-lsp", lazy = true },
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp"
+	},
 	{ "saadparwaiz1/cmp_luasnip", lazy = true },
 	{ "hrsh7th/cmp-buffer", lazy = true },
 	{ "hrsh7th/cmp-path", lazy = true },
@@ -114,9 +123,7 @@ require("lazy").setup({
 		'ggandor/leap.nvim',
 		config = function() require('leap').create_default_mappings() end,
 	},
-	{
-		'nvim-tree/nvim-web-devicons',
-	},
+	{ 'nvim-tree/nvim-web-devicons', },
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
