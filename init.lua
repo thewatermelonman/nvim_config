@@ -203,6 +203,10 @@ require("lazy").setup({
 		"lunarvim/colorschemes"
 	},
 	{
+		"RRethy/base16-nvim",
+		config = function() require('base16-colorscheme').setup() end,
+	},
+	{
 		"Abstract-IDE/Abstract-cs"
 	},
 	{
