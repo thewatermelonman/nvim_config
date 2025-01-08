@@ -27,6 +27,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find Files"})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Live Grep"})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find Buffer"})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Help Tags"})
+vim.keymap.set('n', '<leader>fc', builtin.colorscheme ,{desc = "Choose Colorscheme"})
 vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, {desc = "Next Error"})
 vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, {desc = "Prev Error"})
 -- Terminal
