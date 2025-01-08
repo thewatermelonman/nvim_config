@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap('n', '<leader>c', ':bd<CR>', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<leader>C', ':bd!<CR>', { noremap = true, silent = true, desc = 'Close current window without saving'})
 vim.api.nvim_set_keymap('n', '<leader>q', ':confirm q<CR>', { noremap = true, silent = true, desc = "Quit"})
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', { noremap = true, silent = true, desc = "No Highlight"})
-vim.api.nvim_set_keymap('t', '<leader>t', [[<C-\><C-n><Cmd>ToggleTerm<CR>]], { noremap = true, silent = true, desc = "ToggleTerm"})
+vim.api.nvim_set_keymap('t', '<C-t>', [[<C-\><C-n><Cmd>ToggleTerm<CR>]], { noremap = true, silent = true, desc = "ToggleTerm"})
 vim.api.nvim_set_keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], { noremap = true, silent = true, desc = "Change Window"})
 
 -- Move current line / block with Alt-j/k ala vscode.
@@ -38,6 +38,12 @@ require('which-key').register({
 		f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
 		b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
 		n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+	},
+	["m"] = {
+		name = "Makeit",
+		o = { ":MakeitOpen<cr>", "Open"},
+		m = { ":MakeitRedo<cr>", "Redo"},
+		t = { ":MakeitToggleResults<cr>", "Toggle Results"},
 	}
 }, { prefix = "<leader>" })
 
