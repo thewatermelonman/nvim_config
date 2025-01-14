@@ -30,9 +30,10 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Help Tags"})
 vim.keymap.set('n', '<leader>fc', builtin.colorscheme ,{desc = "Choose Colorscheme"})
 vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, {desc = "Next Error"})
 vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, {desc = "Prev Error"})
--- Terminal
 require('which-key').register({
+	-- Terminal
 	["t"] = { "<cmd>ToggleTerm<CR> <C-\\><C-n>i", "Terminal" },
+	--Buffers
 	b = {
 		name = "Buffers",
 		j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -40,6 +41,7 @@ require('which-key').register({
 		b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
 		n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
 	},
+	--Makeit
 	["m"] = {
 		name = "Makeit",
 		o = { ":MakeitOpen<cr>", "Open"},

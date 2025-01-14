@@ -19,18 +19,26 @@ require('plugins.cmake')
 require('mappings')
 require('lsp.init')
 
-vim.cmd('colorscheme aurora')
+vim.cmd('set termguicolors')
+vim.cmd('set background=dark')
+
+--vim.cmd('colorscheme aurora')
+--vim.cmd('colorscheme base16-schemer-dark')
+--vim.cmd('colorscheme zenburned')
 vim.cmd('colorscheme melange')
+
+
+
 --[[ vim.opt.shell = "pwsh.exe"
 vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
 vim.cmd [[
 		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 		set shellquote= shellxquote=
-  
+]]  
 
 -- Set a compatible clipboard manager
--[[ vim.g.clipboard = {
+vim.g.clipboard = {
 	copy = {
 		["*"] = "win32yank.exe -i --crlf",
 		["+"] = "win32yank.exe -i --crlf",
@@ -39,6 +47,6 @@ vim.cmd [[
 		["+"] = "win32yank.exe -o --lf",
 		["*"] = "win32yank.exe -o --lf",
 	},
-} ]]
+}
 
 
