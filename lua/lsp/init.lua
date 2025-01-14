@@ -36,8 +36,12 @@ lspconfig.html.setup {
 
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
+--[[ lspconfig.cmake.setup{
+	filetypes =
+		{ "cmake", "CMakeLists.txt" }
+} ]]
 
-
+lspconfig.clangd.setup{}
 -- Completion Plugin Setup
 local cmp = require'cmp'
 cmp.setup({

@@ -26,8 +26,10 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Plugins:
+-- plenary
 -- makeit
 -- overseer
+-- cmake-tools
 -- treesitter
 -- mason
 -- rust-tools
@@ -53,6 +55,7 @@ vim.opt.rtp:prepend(lazypath)
 -- vim-surround
 -- bufferline
 require("lazy").setup({
+	{ "nvim-lua/plenary.nvim" },
 	{ -- makeit
 		"Zeioth/makeit.nvim",
 		cmd = {"MakeitOpen", "MakeitToggleResults", "MakeitRedo"},
@@ -71,6 +74,9 @@ require("lazy").setup({
 				default_detail = 1
 			},
 		},
+	},
+	{--cmake
+		'Civitasv/cmake-tools.nvim' 
 	},
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -211,6 +217,9 @@ require("lazy").setup({
 		} end,
 	},
 	-- Colorscemes
+	{
+		"savq/melange-nvim" 
+	},
 	{
 		"lunarvim/colorschemes"
 	},
