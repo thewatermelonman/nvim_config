@@ -55,12 +55,22 @@ vim.opt.rtp:prepend(lazypath)
 -- vim-surround
 -- bufferline
 require("lazy").setup({
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
 	{ "nvim-lua/plenary.nvim" },
 	{ -- makeit
 		"Zeioth/makeit.nvim",
 		cmd = {"MakeitOpen", "MakeitToggleResults", "MakeitRedo", "MakeitStop"},
 		dependencies = { "stevearc/overseer.nvim" },
-		opts = {},
+		opts = {
+		},
 	},
 	{ --overseer
 		"stevearc/overseer.nvim",
@@ -69,8 +79,8 @@ require("lazy").setup({
 		opts = {
 			task_list = {
 				direction = "bottom",
-				min_height = 25,
-				max_height = 25,
+				min_height = 10,
+				max_height = 10,
 				default_detail = 1
 			},
 		},
@@ -148,10 +158,10 @@ require("lazy").setup({
 	},
 	{
 		'ggandor/leap.nvim',
-		config = function() require('leap').create_default_mappings() end,
+		--config = function() require('leap') end
 	},
 	{ 'nvim-tree/nvim-web-devicons', },
-	{
+	--[[ {
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
 		lazy = false,
@@ -162,11 +172,21 @@ require("lazy").setup({
 			require("nvim-tree").setup {
 				view = {
 					float = {
-						enable = true,
+						enable = false,
 					},
 				},
 			}
 		end,
+	}, ]]
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
 	},
 	{
 		'stevearc/oil.nvim',

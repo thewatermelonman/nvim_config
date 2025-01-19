@@ -3,7 +3,8 @@
 vim.keymap.set("n", "<leader>/", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true, desc = "Comment Line" })
 
 -- quick actions
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true, desc = 'Toggle Explorer'})
+vim.api.nvim_set_keymap('n', '<leader>E', ':Neotree left toggle<CR>', {noremap = true, silent = true, desc = 'Toggle Explorer'})
+vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree float toggle<CR>', {noremap = true, silent = true, desc = 'Toggle floating Explorer'})
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true, desc = "Save"})
 vim.api.nvim_set_keymap('n', '<leader>c', ':bd<CR>', { noremap = true, silent = true, desc = 'Close current window'})
 vim.api.nvim_set_keymap('n', '<leader>C', ':bd!<CR>', { noremap = true, silent = true, desc = 'Close current window without saving'})
@@ -30,29 +31,29 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Help Tags"})
 vim.keymap.set('n', '<leader>fc', builtin.colorscheme ,{desc = "Choose Colorscheme"})
 vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, {desc = "Next Error"})
 vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, {desc = "Prev Error"})
-require('which-key').register({
-	-- Terminal
-	["t"] = { "<cmd>ToggleTerm<CR> <C-\\><C-n>i", "Terminal" },
-	--Buffers
-	b = {
-		name = "Buffers",
-		j = { "<cmd>BufferLinePick<cr>", "Jump" },
-		f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-		b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
-		n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
-	},
-	--Makeit
-	["m"] = {
-		name = "Makeit",
-		o = { ":MakeitOpen<cr>", "Open"},
-		m = { ":MakeitRedo<cr>", "Redo"},
-		t = { ":MakeitToggleResults<cr>", "Toggle Results"},
-	}
-}, { prefix = "<leader>" })
 
+-- leap
+vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap-forward)')
+vim.keymap.set({'n', 'x', 'o'}, 'S',  '<Plug>(leap-backward)')
+--vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)') Conflicts with vim-surround
+
+local wk = require("which-key")
+wk.add({
+	{ "<leader>b", group = "Buffers" },
+	{ "<leader>bb", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous" },
+	{ "<leader>bf", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
+	{ "<leader>bj", "<cmd>BufferLinePick<cr>", desc = "Jump" },
+	{ "<leader>bn", "<cmd>BufferLineCycleNext<cr>", desc = "Next" },
+	{ "<leader>m", group = "Makeit" },
+	{ "<leader>mm", ":MakeitRedo<cr>", desc = "Redo" },
+	{ "<leader>mo", ":MakeitOpen<cr>", desc = "Open" },
+	{ "<leader>mt", ":MakeitToggleResults<cr>", desc = "Toggle Results" },
+	{ "<leader>t", "<cmd>ToggleTerm<CR> <C-\\><C-n>i", desc = "Terminal" },
+})
 
 -- LSP
--- vim.keymap.set('n', '<space>E', vim.diagnostic.open_float, {desc = "See Diagnostic"})
+vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, {desc = "See Diagnostic"})
+vim.keymap.set('n', '<space>lr', ":LspRestart<cr>", {desc = "Restart Lsp"})
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 	callback = function(ev)

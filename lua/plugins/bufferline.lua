@@ -4,7 +4,6 @@ require('bufferline').setup {
 			{
 				filetype = "NvimTree",
 				text = "Nvim Tree",
-				separator = true,
 				text_align = "left"
 			},
 		}

@@ -35,7 +35,7 @@ lspconfig.html.setup {
 }
 
 lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 --[[ lspconfig.cmake.setup{
 	filetypes =
 		{ "cmake", "CMakeLists.txt" }

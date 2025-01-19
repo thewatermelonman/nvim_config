@@ -8,13 +8,13 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 require('mason').setup()
 
-
 require('plugins.bufferline')
 require('plugins.toggleterm')
 require('plugins.treesitter')
 require('plugins.lualine')
 require('plugins.telescope')
 require('plugins.cmake')
+require('plugins.markdown')
 
 require('mappings')
 require('lsp.init')
