@@ -21,6 +21,9 @@ require('lsp.init')
 
 vim.cmd('set termguicolors')
 vim.cmd('set background=dark')
+vim.cmd('set tabstop=4')
+vim.cmd('set shiftwidth=4')
+vim.cmd('set expandtab')
 
 --vim.cmd('colorscheme aurora')
 --vim.cmd('colorscheme base16-schemer-dark')
