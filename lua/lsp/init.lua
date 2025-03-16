@@ -5,6 +5,17 @@ local on_attach = function(client)
     require'completion'.on_attach(client)
 end
 
+vim.g.zig_fmt_parse_errors = 0
+vim.g.zig_fmt_autosave = 0
+
+lspconfig.zls.setup {
+  settings = {
+    zls = {
+      semantic_tokens = "partial",
+    }
+  }
+}
+
 lspconfig.rust_analyzer.setup({
 	capabilities = cmp_capabilities,
 	on_attach = on_attach,
