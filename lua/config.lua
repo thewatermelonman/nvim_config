@@ -30,17 +30,14 @@ vim.cmd('set expandtab')
 --vim.cmd('colorscheme zenburned')
 vim.cmd('colorscheme melange')
 
-
-
---[[ vim.opt.shell = "pwsh.exe"
+ --[[ vim.opt.shell = "pwsh.exe"
 vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-vim.cmd [[
+vim.cmd [
 		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 		set shellquote= shellxquote=
-]]  
+]  
 
--- Set a compatible clipboard manager
 vim.g.clipboard = {
 	copy = {
 		["*"] = "win32yank.exe -i --crlf",
@@ -51,5 +48,10 @@ vim.g.clipboard = {
 		["*"] = "win32yank.exe -o --lf",
 	},
 }
+
+]]
+
+-- Set a compatible clipboard manager
+vim.cmd('set clipboard=unnamedplus')
 
 
