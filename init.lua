@@ -29,6 +29,7 @@ vim.opt.rtp:prepend(lazypath)
 -- plenary
 -- makeit
 -- overseer
+-- neogit
 -- cmake-tools
 -- treesitter
 -- mason
@@ -76,6 +77,17 @@ require("lazy").setup({
 			},
 		},
 	},
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
+
+            -- Only one of these is needed.
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+        config = true
+    },
 	{--cmake
 		'Civitasv/cmake-tools.nvim' 
 	},
