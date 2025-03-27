@@ -30,7 +30,9 @@ vim.opt.rtp:prepend(lazypath)
 -- plenary
 -- makeit
 -- overseer
+-- neogen
 -- neogit
+-- telekasten
 -- cmake-tools
 -- treesitter
 -- mason
@@ -65,6 +67,15 @@ require("lazy").setup({
 		opts = {
 		},
 	},
+    {
+        "github/copilot.vim"
+    },
+    { 
+        "danymat/neogen", 
+        config = true,
+        -- Uncomment next line if you want to follow only stable versions
+        -- version = "*" 
+    },
 	{ --overseer
 		"stevearc/overseer.nvim",
 		commit = "400e762648b70397d0d315e5acaf0ff3597f2d8b",
@@ -88,6 +99,10 @@ require("lazy").setup({
             "nvim-telescope/telescope.nvim", -- optional
         },
         config = true
+    },
+    {
+    'renerocksai/telekasten.nvim',
+    dependencies = {'nvim-telescope/telescope.nvim'}
     },
 	{--cmake
 		'Civitasv/cmake-tools.nvim' 

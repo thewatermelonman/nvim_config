@@ -15,6 +15,7 @@ require('plugins.lualine')
 require('plugins.telescope')
 require('plugins.cmake')
 require('plugins.markdown')
+require('plugins.telekasten')
 
 require('mappings')
 require('lsp.init')
