@@ -1,16 +1,6 @@
--- packer
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-end
-vim.cmd("packadd packer.nvim")
-require("packer").startup(function(use)
-    use {"neovim/nvim-lspconfig"}
-    -- use {"SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig"}
-end)
-
--- lazy
+-- lazy 
 local lazypath = vim.fn.stdpath("data").. "/lazy/lazy.nvim"
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -26,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Plugins:
--- emoji.nvim
 -- plenary
 -- makeit
 -- overseer
@@ -35,9 +24,9 @@ vim.opt.rtp:prepend(lazypath)
 -- telekasten
 -- cmake-tools
 -- treesitter
--- mason
 -- rust-tools
--- telescope
+-- telescope:
+--  "xiyaowong/telescope-emoji.nvim"
 -- lsp:
 -- 	"hrsh7th/nvim-cmp",
 -- 	"cmp-nvim-lsp",
@@ -59,6 +48,17 @@ vim.opt.rtp:prepend(lazypath)
 -- vim-surround
 -- bufferline
 require("lazy").setup({
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
 	{ "nvim-lua/plenary.nvim" },
 	{ -- makeit
 		"Zeioth/makeit.nvim",
@@ -118,20 +118,6 @@ require("lazy").setup({
         "OXY2DEV/markview.nvim",
         lazy = false
     },
-	-- {
-	-- 	'MeanderingProgrammer/render-markdown.nvim',
-	-- 	dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-	-- 	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-	-- 	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-	-- 	---@module 'render-markdown'
-	-- 	---@type render.md.UserConfig
-	-- 	opts = {},
-	-- },
-	{
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	},
 	{
 		'simrat39/rust-tools.nvim',
 	},
@@ -139,6 +125,8 @@ require("lazy").setup({
 		'nvim-telescope/telescope.nvim', tag = '0.1.6',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 	},
+	{ "xiyaowong/telescope-emoji.nvim" },
+    { "neovim/nvim-lspconfig" },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -150,19 +138,16 @@ require("lazy").setup({
 		},
 	},
 	{ "hrsh7th/cmp-nvim-lsp", lazy = true },
+	{ "saadparwaiz1/cmp_luasnip", lazy = true },
+	{ "hrsh7th/cmp-buffer", lazy = true },
+	{ "hrsh7th/cmp-path", lazy = true },
+	{ "hrsh7th/cmp-cmdline", lazy = true, },
 	{
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
 		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp"
-	},
-	{ "saadparwaiz1/cmp_luasnip", lazy = true },
-	{ "hrsh7th/cmp-buffer", lazy = true },
-	{ "hrsh7th/cmp-path", lazy = true },
-	{
-		"hrsh7th/cmp-cmdline",
-		lazy = true,
 	},
 	{
 		'windwp/nvim-ts-autotag',
@@ -193,34 +178,6 @@ require("lazy").setup({
 		--config = function() require('leap') end
 	},
 	{ 'nvim-tree/nvim-web-devicons', },
-    {
-        "allaman/emoji.nvim",
-        version = "1.0.0", -- optionally pin to a tag
-        ft = "markdown", -- adjust to your needs
-        dependencies = {
-            -- util for handling paths
-            "nvim-lua/plenary.nvim",
-            -- optional for nvim-cmp integration
-            -- "hrsh7th/nvim-cmp",
-            -- optional for telescope integration
-            "nvim-telescope/telescope.nvim",
-            -- optional for fzf-lua integration via vim.ui.select
-            -- "ibhagwan/fzf-lua",
-        },
-        opts = {
-            -- default is false, also needed for blink.cmp integration!
-            -- enable_cmp_integration = true,
-            -- optional if your plugin installation directory
-            -- is not vim.fn.stdpath("data") .. "/lazy/
-            -- plugin_path = vim.fn.expand("$HOME/plugins/"),
-        },
-        config = function(_, opts)
-            require("emoji").setup(opts)
-            -- optional for telescope integration
-            local ts = require('telescope').load_extension 'emoji'
-            vim.keymap.set('n', '<leader>fe', ts.emoji, { desc = '[S]earch [E]moji' })
-        end,
-    },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",

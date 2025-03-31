@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-require('mason').setup()
+--require('mason').setup()
 
 require('plugins.bufferline')
 require('plugins.toggleterm')
@@ -30,6 +30,11 @@ vim.cmd('set expandtab')
 --vim.cmd('colorscheme base16-schemer-dark')
 --vim.cmd('colorscheme zenburned')
 vim.cmd('colorscheme melange')
+
+-- disable Copilot by default
+vim.cmd('Copilot disable')
+
+vim.diagnostic.config({ virtual_text = true })
 
  --[[ vim.opt.shell = "pwsh.exe"
 vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"

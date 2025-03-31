@@ -1,62 +1,6 @@
-local lspconfig = require'lspconfig'
-local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
-
-vim.g.zig_fmt_parse_errors = 0
-vim.g.zig_fmt_autosave = 0
-
-lspconfig.zls.setup {
-  settings = {
-    zls = {
-      semantic_tokens = "partial",
-    }
-  }
-}
-
-lspconfig.gopls.setup{}
-
-lspconfig.rust_analyzer.setup({
-	capabilities = cmp_capabilities,
-	on_attach = on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    }
-})
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-lspconfig.html.setup {
-  capabilities = capabilities,
-}
-
-lspconfig.pyright.setup {}
-lspconfig.ts_ls.setup {}
---[[ lspconfig.cmake.setup{
-	filetypes =
-		{ "cmake", "CMakeLists.txt" }
-} ]]
-
-lspconfig.clangd.setup{}
 -- Completion Plugin Setup
 local cmp = require'cmp'
+
 cmp.setup({
 	snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -97,17 +41,41 @@ cmp.setup({
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
   },
-  formatting = {
-      fields = {'menu', 'abbr', 'kind'},
-      format = function(entry, item)
-          local menu_icon ={
-              nvim_lsp = 'λ',
-              vsnip = '⋗',
-              buffer = 'Ω',
-              path = '🖫',
-          }
-          item.menu = menu_icon[entry.source.name]
-          return item
-      end,
-  },
 })
+
+
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local lspconfig = require'lspconfig'
+lspconfig.lua_ls.setup({})
+
+lspconfig.rust_analyzer.setup({
+	capabilities = cmp_capabilities,
+	on_attach = on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
+
+
+lspconfig.html.setup {
+  capabilities = capabilities,
+}
+lspconfig.pyright.setup {}
+lspconfig.ts_ls.setup {}
+lspconfig.clangd.setup{}
