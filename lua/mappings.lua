@@ -28,6 +28,11 @@ vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { noremap = true, s
 vim.api.nvim_set_keymap('v', '<A-j>', ':m \'>+1<CR>gv-gv', { noremap = true, silent = true, desc = "Move Up"})
 vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv-gv', { noremap = true, silent = true, desc = "Move Up"})
 
+vim.api.nvim_set_keymap('n', '<A-l>', 'xp', { noremap = true, silent = true, desc = "Move Left"})
+vim.api.nvim_set_keymap('v', '<A-l>', 'xp', { noremap = true, silent = true, desc = "Move Left"})
+vim.api.nvim_set_keymap('n', '<A-h>', 'xhP', { noremap = true, silent = true, desc = "Move Right"})
+vim.api.nvim_set_keymap('v', '<A-h>', 'xhP', { noremap = true, silent = true, desc = "Move Right"})
+
 -- Map 'n' and 'N' to search next/previous without changing cursor position
 vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })

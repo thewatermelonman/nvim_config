@@ -72,10 +72,8 @@ lspconfig.rust_analyzer.setup({
     }
 })
 
-
-lspconfig.html.setup {
-  capabilities = capabilities,
-}
+lspconfig.html.setup {}
+lspconfig.zls.setup {}
 lspconfig.pyright.setup {}
 lspconfig.ts_ls.setup {}
 lspconfig.clangd.setup{}

@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Plugins:
+-- vidocqh/data-viewer
 -- plenary
 -- makeit
 -- overseer
@@ -48,6 +49,14 @@ vim.opt.rtp:prepend(lazypath)
 -- vim-surround
 -- bufferline
 require("lazy").setup({
+    {
+        'vidocqh/data-viewer.nvim',
+        opts = {},
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "kkharji/sqlite.lua", -- Optional, sqlite support
+        }
+    },
     {
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
