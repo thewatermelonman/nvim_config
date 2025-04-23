@@ -49,6 +49,23 @@ local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require'lspconfig'
 lspconfig.lua_ls.setup({})
 
+require('java').setup {}
+require('lspconfig').jdtls.setup({
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-21",
+            path = "/opt/jdk-21",
+            default = true,
+          }
+        }
+      }
+    }
+  }
+})
+
 lspconfig.rust_analyzer.setup({
 	capabilities = cmp_capabilities,
 	on_attach = on_attach,

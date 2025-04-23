@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Plugins:
+-- nvim-java/nvim-java
 -- vidocqh/data-viewer
 -- plenary
 -- makeit
@@ -49,6 +50,7 @@ vim.opt.rtp:prepend(lazypath)
 -- vim-surround
 -- bufferline
 require("lazy").setup({
+    {'nvim-java/nvim-java'},
     {
         'vidocqh/data-viewer.nvim',
         opts = {},
@@ -240,6 +242,19 @@ require("lazy").setup({
 		} end,
 	},
 	-- Colorscemes
+    {
+        'mhartington/oceanic-next'
+    },
+    {
+        "slugbyte/lackluster.nvim",
+        lazy = false,
+        priority = 1000,
+        init = function()
+            vim.cmd.colorscheme("lackluster")
+            -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+            -- vim.cmd.colorscheme("lackluster-mint")
+        end,
+    },
 	{
 		"savq/melange-nvim" 
 	},
