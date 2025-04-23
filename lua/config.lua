@@ -6,7 +6,14 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
---require('mason').setup()
+vim.opt.conceallevel=2
+
+
+vim.cmd('set termguicolors')
+vim.cmd('set background=dark')
+vim.cmd('set tabstop=4')
+vim.cmd('set shiftwidth=4')
+vim.cmd('set expandtab')
 
 require('plugins.bufferline')
 require('plugins.toggleterm')
@@ -15,16 +22,10 @@ require('plugins.lualine')
 require('plugins.telescope')
 require('plugins.cmake')
 require('plugins.markdown')
-require('plugins.telekasten')
+require('plugins.obsidian')
 
 require('mappings')
 require('lsp.init')
-
-vim.cmd('set termguicolors')
-vim.cmd('set background=dark')
-vim.cmd('set tabstop=4')
-vim.cmd('set shiftwidth=4')
-vim.cmd('set expandtab')
 
 --vim.cmd('colorscheme aurora')
 --vim.cmd('colorscheme base16-schemer-dark')

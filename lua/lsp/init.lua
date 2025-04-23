@@ -30,11 +30,11 @@ cmp.setup({
   -- Installed sources:
   sources = {
     { name = 'path' },                              -- file paths
-    { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
+    { name = 'nvim_lsp', keyword_length = 2 },      -- from language server
     { name = 'luasnip'},            -- display function signatures with current parameter emphasized
     { name = 'nvim_cmdline', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
-    { name = 'buffer', keyword_length = 2 },        -- source current buffer
-	{ name = 'vsnip', keyword_length = 2 },
+    { name = 'buffer', keyword_length = 3},        -- source current buffer
+	{ name = 'vsnip', keyword_length = 2},
     { name = 'calc'},                               -- source for math calculation
   },
   window = {
@@ -47,7 +47,7 @@ cmp.setup({
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require'lspconfig'
-lspconfig.lua_ls.setup({})
+-- lspconfig.lua_ls.setup({})
 
 require('java').setup {}
 require('lspconfig').jdtls.setup({
