@@ -110,8 +110,10 @@ require("lazy").setup({
         config = true
     },
     {
-    'renerocksai/telekasten.nvim',
-    dependencies = {'nvim-telescope/telescope.nvim'}
+        "epwalsh/obsidian.nvim",
+        lazy = true,
+        ft = "markdown",
+        dependencies = { "nvim-lua/plenary.nvim",},
     },
 	{--cmake
 		'Civitasv/cmake-tools.nvim' 
@@ -123,10 +125,10 @@ require("lazy").setup({
 			ts_update()
 		end,
 	},
-    {
-        "OXY2DEV/markview.nvim",
-        lazy = false
-    },
+    -- {
+    --     "OXY2DEV/markview.nvim",
+    --     lazy = false
+    -- },
 	{
 		'simrat39/rust-tools.nvim',
 	},
@@ -269,10 +271,10 @@ require("lazy").setup({
 		    vim.cmd.colorscheme('zenbones')
 		end
 	},
-	{
-		"RRethy/base16-nvim",
-		config = function() require('base16-colorscheme').setup() end,
-	},
+	-- {
+	-- 	"RRethy/base16-nvim",
+	-- 	config = function() require('base16-colorscheme').setup() end,
+	-- },
 	{
 		"Abstract-IDE/Abstract-cs"
 	},

@@ -40,6 +40,20 @@ vim.api.nvim_set_keymap('n', '<leader>pp', '"+p', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n', '<leader>ps', '"+', { noremap = true, silent = true, desc = "Select Clipboard" })
 vim.api.nvim_set_keymap('n', '<leader>pe', '"*p', { noremap = true, silent = true, desc = "Print Emoji" })
 
+-- Remaps due to tmux
+vim.api.nvim_set_keymap('v', '<C-i>', '<C-a>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-i>', '<C-a>', { noremap = true, silent = true })
+
+-- braces
+vim.api.nvim_set_keymap('i', 'ö', '(', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'ä', ')', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-(>', '[', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-)>', ']', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'Ö', '{', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'Ä', '}', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('i', '<A-ö>', 'ö', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-ä>', 'ä', { noremap = true, silent = true })
 -- Telescope
 local builtin = require('telescope.builtin')
 
@@ -83,3 +97,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.keymap.set('n', '<leader>n', vim.diagnostic.goto_next, {desc = 'Next Error'})
 vim.keymap.set('n', '<leader>N', vim.diagnostic.goto_prev, {desc = 'Prev Error'})
 vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, {desc = 'Goto declaration'})
+
+-- Obsidian
+vim.keymap.set( 'n', '<leader>On', ':ObsidianNew ', { desc = 'Obsidian: Create new Note' }) 
+vim.keymap.set( 'n', '<leader>OO', ':ObsidianQuickSwitch <CR>', { desc = 'Obsidian: Quick Search' }) 
+vim.keymap.set( 'n', '<leader>Of', ':ObsidianFollowLink <CR>', { desc = 'Obsidian: Follow Link' }) 
+vim.keymap.set( 'n', '<leader>Ob', ':ObsidianBacklinks <CR>', { desc = 'Obsidian: Back Link' }) 
+vim.keymap.set( 'n', '<leader>Ot', ':ObsidianTags <CR>', { desc = 'Obsidian: Tags' }) 
+vim.keymap.set( 'n', '<leader>Os', ':ObsidianSearch <CR>', { desc = 'Obsidian: Search' })
+vim.keymap.set( 'n', '<leader>Ol', ':ObsidianLink ', { desc = 'Obsidian: Link' }) 
+vim.keymap.set( 'n', '<leader>OL', ':ObsidianLinks <CR>', { desc = 'Obsidian: Links' }) 
+vim.keymap.set( 'n', '<leader>ON', ':ObsidianLinkNew ', { desc = 'Obsidian: New Link' }) 
+vim.keymap.set( 'n', '<leader>Or', ':ObsidianRename ', { desc = 'Obsidian: Rename' }) 
