@@ -1,4 +1,4 @@
-return {
+local ret =  {
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function() require('lualine').setup {
@@ -16,4 +16,6 @@ return {
 				lualine_z = {'location'}
 			},
 		} end,
-}
+};
+
+return {}

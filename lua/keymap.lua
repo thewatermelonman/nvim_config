@@ -18,6 +18,9 @@ vim.api.nvim_set_keymap('n', '<leader>C', ':bd!<CR>', { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<leader>q', ':confirm q<CR>', { noremap = true, silent = true, desc = "Quit"})
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', { noremap = true, silent = true, desc = "No Highlight"})
 
+vim.api.nvim_set_keymap('n', '<leader>bb', ':bp<CR>', { noremap = true, silent = true, desc = "Buffer Back"})
+vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = "Buffer Next"})
+
 
 vim.api.nvim_set_keymap('n', '<Tab>', ':bn<CR>', {noremap = true, silent = true })
 
@@ -50,3 +53,30 @@ vim.keymap.set('n', '<leader>le', function()
   end)
 
 
+-- harpoon
+local harpoon = require("harpoon")
+
+harpoon:setup()
+
+vim.keymap.set('n', '<leader>mm', function() harpoon:list():add() end, 		{desc="Mark"})
+vim.keymap.set('n', '<leader>mt', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, {desc="Quick Menu"})
+vim.keymap.set('n', '<leader>ma', function() harpoon:list():select(1) end, 	{desc="Select 1."})
+vim.keymap.set('n', '<leader>ms', function() harpoon:list():select(2) end, 	{desc="Select 2."})
+vim.keymap.set('n', '<leader>md', function() harpoon:list():select(3) end, 	{desc="Select 3."})
+vim.keymap.set('n', '<leader>mf', function() harpoon:list():select(4) end, 	{desc="Select 4."})
+vim.keymap.set('n', '<leader>mn', function() harpoon:list():prev() end, 	{desc="Select Next"})
+vim.keymap.set('n', '<leader>mb', function() harpoon:list():next() end, 	{desc="Select Prev"})
+
+
+vim.keymap.set('n', '<leader>fm', ':set foldmethod=manual<CR>', {desc="fold manually"})
+vim.keymap.set('n', '<leader>fe', ':set foldmethod=expr<CR>', {desc="fold with TS"})
+
+local fidget = require("fidget")
+
+vim.keymap.set("n", "<leader>x", function()
+  fidget.notify("This is from fidget.notify().")
+end)
+
+
+vim.keymap.set('n', '<leader>P', ":mks!<CR>", 	{desc="Save Session"})
+vim.keymap.set('n', '<leader>p', ":source Session.vim<CR>", 	{desc="Open last Session"})
