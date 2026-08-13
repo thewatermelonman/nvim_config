@@ -21,7 +21,7 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<leader>bb', ':bp<CR>', { noremap = true, silent = true, desc = "Buffer Back"})
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = "Buffer Next"})
 
-
+-- buffer next with tab
 vim.api.nvim_set_keymap('n', '<Tab>', ':bn<CR>', {noremap = true, silent = true })
 
 -- Reload
@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>le', function()
         },
       })
     end
-  end)
+  end, {desc = "Next Error"})
 
 
 -- harpoon
@@ -67,16 +67,25 @@ vim.keymap.set('n', '<leader>mf', function() harpoon:list():select(4) end, 	{des
 vim.keymap.set('n', '<leader>mn', function() harpoon:list():prev() end, 	{desc="Select Next"})
 vim.keymap.set('n', '<leader>mb', function() harpoon:list():next() end, 	{desc="Select Prev"})
 
-
+-- folding
 vim.keymap.set('n', '<leader>fm', ':set foldmethod=manual<CR>', {desc="fold manually"})
 vim.keymap.set('n', '<leader>fe', ':set foldmethod=expr<CR>', {desc="fold with TS"})
 
-local fidget = require("fidget")
+-- Sessions
+vim.keymap.set('n', '<leader>sP', ":mks!<CR>", 	{desc="Save Session"})
+vim.keymap.set('n', '<leader>sp', ":source Session.vim<CR>", 	{desc="Open last Session"})
 
-vim.keymap.set("n", "<leader>x", function()
-  fidget.notify("This is from fidget.notify().")
-end)
+vim.keymap.set({'n', 'v'}, '<leader>P', "\"*p", 	{desc="Past from clipboard"})
+vim.keymap.set({'n', 'v'}, 'Y', "\"*y", 	{desc="Copy from clipboard"})
+-- Quickfix
+vim.keymap.set('n', '<leader>lO', ":copen<CR>", 	{desc="Quickfix open"})
+vim.keymap.set('n', '<leader>lo', ":copen<CR><C-W>L", 	{desc="Quickfix open"})
+vim.keymap.set('n', '<leader>lc', ":cclose<CR>", 	{desc="Quickfix close"})
+vim.keymap.set('n', '<leader>lc', ":cclose<CR>", 	{desc="Quickfix close"})
+vim.keymap.set('n', '<leader>lp', ":cprevious<CR>", 	{desc="Quickfix previous"})
+vim.keymap.set('n', '<leader>ln', ":cnext<CR>", 	{desc="Quickfix next"})
+vim.keymap.set('n', '<leader>ll', ":clast<CR>", 	{desc="Quickfix last"})
+vim.keymap.set('n', '<leader>lf', ":cfirst<CR>", 	{desc="Quickfix first"})
+vim.keymap.set('n', '<leader>lM', ":make<CR>", 	{desc=":make"})
+vim.keymap.set('n', '<leader>lm', ":make<CR>:copen<CR><C-W>L", 	{desc=":make and switch to Quickfix"})
 
-
-vim.keymap.set('n', '<leader>P', ":mks!<CR>", 	{desc="Save Session"})
-vim.keymap.set('n', '<leader>p', ":source Session.vim<CR>", 	{desc="Open last Session"})

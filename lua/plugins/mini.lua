@@ -26,8 +26,11 @@ return {
       -- Provide icons with their highlighting via a single MiniIcons.get() for various categories: filetype, file/directory path, extension, operating system, LSP kind values. Icons and category defaults can be overridden.
       require('mini.icons').setup()
 
-      require('mini.comment').setup({})
-      require('mini.jump').setup({})
+      require('mini.comment').setup()
+      require('mini.jump').setup()
+      require('mini.jump2d').setup()
     end,
   },
 }
+
+

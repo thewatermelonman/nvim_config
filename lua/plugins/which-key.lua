@@ -50,6 +50,7 @@ return {
         { '<leader>s', group = '[S]earch' },
         { '<leader>m', group = 'Harpoon', mode = { 'n'} },
         { '<leader>l', group = 'Various' },
+        { '<leader>lc', group = 'Quickfix' },
       },
     },
   },
