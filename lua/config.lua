@@ -11,6 +11,7 @@ vim.lsp.enable({
     'lua_ls',
     'clangd',
 	'astro',
+	'nixd',
 })
 
 vim.diagnostic.config({
@@ -45,4 +46,11 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(ev)
     vim.lsp.buf.format()
   end
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.nix",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
 })
