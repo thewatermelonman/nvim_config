@@ -12,6 +12,7 @@ vim.lsp.enable({
     'clangd',
 	'astro',
 	'nixd',
+	'pyright',
 })
 
 vim.diagnostic.config({
