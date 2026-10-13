@@ -1,3 +1,1 @@
-require 'lazy_config'
-require 'config'
-require 'keymap'
+/nix/store/rf5z679mbdxvx4ifr9bxgi759a30lzg9-home-manager-files/.config/nvim/init.lua
